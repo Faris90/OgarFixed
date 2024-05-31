@@ -51,7 +51,7 @@ UpdateNodes.prototype.build = function() {
             continue;
         }
 
-        view.setUint32(offset, node.nodeId, true); // Node ID
+        /*view.setUint32(offset, node.nodeId, true); // Node ID
         view.setInt32(offset + 4, node.position.x, true); // X position
         view.setInt32(offset + 8, node.position.y, true); // Y position
         view.setUint16(offset + 12, node.getSize(), true); // Mass formula: Radius (size) = (mass * mass) / 100
@@ -59,7 +59,16 @@ UpdateNodes.prototype.build = function() {
         view.setUint8(offset + 15, node.color.g, true); // Color (G)
         view.setUint8(offset + 16, node.color.b, true); // Color (B)
         view.setUint8(offset + 17, node.spiked, true); // Flags
-        offset += 18;
+        offset += 18;*/
+        view.setUint32(offset, node.nodeId, true);
+        view.setUint16(offset + 4, node.position.x, true);
+        view.setUint16(offset + 6, node.position.y, true);
+        view.setUint16(offset + 8, node.getSize(), true);
+        view.setUint8(offset + 10, node.color.r, true);
+        view.setUint8(offset + 11, node.color.g, true);
+        view.setUint8(offset + 12, node.color.b, true);
+        view.setUint8(offset + 13, node.spiked, true);
+        offset += 14;
 
         var name = node.getName();
         if (name) {
